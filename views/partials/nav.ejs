@@ -1,0 +1,26 @@
+<!-- views/partials/nav.ejs -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/nav.css" />
+  <title>Rental Bicycle System</title>
+</head>
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-menu">
+      <a href="/about" class="navbar-item">About</a>
+      <% if (user) { %>
+      <a href="/users/<%= user._id %>/rental" class="navbar-item"
+        >Your Rental</a
+      >
+      <a href="/download" class="navbar-item">Download</a>
+      <a href="/auth/sign-out" class="navbar-item navbar-item-signout"
+        >Sign Out</a
+      >
+      <% } else { %>
+      <a href="/auth/sign-in" class="navbar-item">Sign In</a>
+      <a href="/auth/sign-up" class="navbar-item">Sign Up</a>
+      <% } %>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/new.css" />
+    <title>Bike Rental Form</title>
+  </head>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+
+    <main class="rental-form-container">
+      <h1>Rent a Bike</h1>
+      <form
+        action="/users/<%= user._id %>/rental"
+        method="POST"
+        class="rental-form"
+      >
+        <div class="form-group">
+          <label for="adders">Address</label>
+          <input type="text" name="adders" id="adders" required />
+        </div>
+
+        <div class="form-group">
+          <label for="sdate">Start Date</label>
+          <input type="date" name="sdate" id="sdate" required />
+        </div>
+
+        <div class="form-group">
+          <label for="edate">End Date</label>
+          <input type="date" name="edate" id="edate" required />
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <select name="company" id="company" required>
+            <option value="Track">Track</option>
+            <option value="Trinx">Trinx</option>
+            <option value="Klyes">Klyes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select name="type" id="type" required>
+            <option value="Road">Road</option>
+            <option value="Mountain">Mountain</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Touring">Touring</option>
+            <option value="Gravel">Gravel</option>
+            <option value="Cruiser">Cruiser</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input type="text" name="color" id="color" required />
+        </div>
+
+        <button type="submit" class="submit-btn">Rent Bike</button>
+
+        <% if(startDateError){ %>
+        <div class="error-message">
+          Start Date Error: Start date should be Today or above
+        </div>
+        <% } %> <% if(endDateError){ %>
+        <div class="error-message">
+          End Date Error:End Date should be grater than the Start Date
+        </div>
+        <% } %>
+      </form>
+    </main>
+  </body>
+</html>
